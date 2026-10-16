@@ -1,0 +1,235 @@
+{
+  "@context": {
+    "@vocab": "https://acruxcore.com/schema#",
+    "schema": "https://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "dcterms": "http://purl.org/dc/terms/",
+    "acruxcore": "https://acruxcore.com/schema#",
+    "GetAccountApiKeysResponse": "acruxcore:GetAccountApiKeysResponse",
+    "trail": {
+      "@id": "acruxcore:trail",
+      "@container": "@list"
+    },
+    "warning": {
+      "@id": "acruxcore:warning"
+    },
+    "attempts": {
+      "@id": "acruxcore:attempts",
+      "@type": "xsd:integer"
+    },
+    "cacheHit": {
+      "@id": "acruxcore:cacheHit",
+      "@type": "xsd:boolean"
+    },
+    "PostApiV1Response": "acruxcore:PostApiV1Response",
+    "toolId": {
+      "@id": "acruxcore:toolId",
+      "@type": "xsd:string"
+    },
+    "toolName": {
+      "@id": "acruxcore:toolName",
+      "@type": "xsd:string"
+    },
+    "toolAlias": {
+      "@id": "acruxcore:toolAlias",
+      "@type": "xsd:string"
+    },
+    "pinnedVersionNumber": {
+      "@id": "acruxcore:pinnedVersionNumber",
+      "@type": "xsd:string"
+    },
+    "off": {
+      "@id": "acruxcore:off",
+      "@type": "xsd:boolean"
+    },
+    "resolvedVersionNumber": {
+      "@id": "acruxcore:resolvedVersionNumber",
+      "@type": "xsd:integer"
+    },
+    "position": {
+      "@id": "acruxcore:position",
+      "@type": "xsd:integer"
+    },
+    "GetApiV1PromptsVersionsTracesResponse": "acruxcore:GetApiV1PromptsVersionsTracesResponse",
+    "data": {
+      "@id": "acruxcore:data",
+      "@container": "@list"
+    },
+    "total": {
+      "@id": "acruxcore:total",
+      "@type": "xsd:integer"
+    },
+    "page": {
+      "@id": "acruxcore:page",
+      "@type": "xsd:integer"
+    },
+    "limit": {
+      "@id": "acruxcore:limit",
+      "@type": "xsd:integer"
+    },
+    "PostApiV1PromptsImportRequest": "acruxcore:PostApiV1PromptsImportRequest",
+    "schemaVersion": {
+      "@id": "acruxcore:schemaVersion",
+      "@type": "xsd:integer"
+    },
+    "exportedAt": {
+      "@id": "acruxcore:exportedAt",
+      "@type": "xsd:string"
+    },
+    "prompt": {
+      "@id": "acruxcore:prompt"
+    },
+    "prompt.name": {
+      "@id": "acruxcore:prompt.name",
+      "@type": "xsd:string"
+    },
+    "prompt.description": {
+      "@id": "acruxcore:prompt.description",
+      "@type": "xsd:string"
+    },
+    "version": {
+      "@id": "acruxcore:version"
+    },
+    "version.versionNumber": {
+      "@id": "acruxcore:version.versionNumber",
+      "@type": "xsd:integer"
+    },
+    "version.messages": {
+      "@id": "acruxcore:version.messages",
+      "@container": "@list"
+    },
+    "version.variables": {
+      "@id": "acruxcore:version.variables",
+      "@container": "@list"
+    },
+    "version.createdAt": {
+      "@id": "acruxcore:version.createdAt",
+      "@type": "xsd:string"
+    },
+    "PostApiV1PromptsImportResponse": "acruxcore:PostApiV1PromptsImportResponse",
+    "prompt.id": {
+      "@id": "acruxcore:prompt.id",
+      "@type": "xsd:string"
+    },
+    "version.id": {
+      "@id": "acruxcore:version.id",
+      "@type": "xsd:string"
+    },
+    "GetApiV1TracesIdResponse": "acruxcore:GetApiV1TracesIdResponse",
+    "trace": {
+      "@id": "acruxcore:trace"
+    },
+    "spans": {
+      "@id": "acruxcore:spans",
+      "@container": "@list"
+    },
+    "GetApiV1TracesFacetsValuesResponse": "acruxcore:GetApiV1TracesFacetsValuesResponse",
+    "values": {
+      "@id": "acruxcore:values",
+      "@container": "@list"
+    },
+    "GetApiV1V1IdResponse": "acruxcore:GetApiV1V1IdResponse",
+    "PostApiV1V1IdRequest": "acruxcore:PostApiV1V1IdRequest",
+    "name": {
+      "@id": "acruxcore:name",
+      "@type": "xsd:string"
+    },
+    "description": {
+      "@id": "acruxcore:description",
+      "@type": "xsd:string"
+    },
+    "PostApiV1V1IdResponse": "acruxcore:PostApiV1V1IdResponse",
+    "id": {
+      "@id": "acruxcore:id",
+      "@type": "xsd:string"
+    },
+    "teamId": {
+      "@id": "acruxcore:teamId",
+      "@type": "xsd:string"
+    },
+    "createdBy": {
+      "@id": "acruxcore:createdBy",
+      "@type": "xsd:string"
+    },
+    "createdAt": {
+      "@id": "acruxcore:createdAt",
+      "@type": "xsd:string"
+    },
+    "callable": {
+      "@id": "acruxcore:callable",
+      "@type": "xsd:boolean"
+    },
+    "versionCount": {
+      "@id": "acruxcore:versionCount",
+      "@type": "xsd:integer"
+    },
+    "latestVersionNumber": {
+      "@id": "acruxcore:latestVersionNumber",
+      "@type": "xsd:integer"
+    },
+    "executorType": {
+      "@id": "acruxcore:executorType",
+      "@type": "xsd:string"
+    },
+    "aliases": {
+      "@id": "acruxcore:aliases",
+      "@container": "@list"
+    },
+    "PostPromptsRequest": "acruxcore:PostPromptsRequest",
+    "PostPromptsResponse": "acruxcore:PostPromptsResponse",
+    "PutPromptsIdToolsToolidRequest": "acruxcore:PutPromptsIdToolsToolidRequest",
+    "tool_alias": {
+      "@id": "acruxcore:tool_alias",
+      "@type": "xsd:string"
+    },
+    "PutPromptsIdToolsToolidResponse": "acruxcore:PutPromptsIdToolsToolidResponse",
+    "PostPromptsIdVersionsRequest": "acruxcore:PostPromptsIdVersionsRequest",
+    "messages": {
+      "@id": "acruxcore:messages",
+      "@container": "@list"
+    },
+    "PostPromptsIdVersionsResponse": "acruxcore:PostPromptsIdVersionsResponse",
+    "promptId": {
+      "@id": "acruxcore:promptId",
+      "@type": "xsd:string"
+    },
+    "versionNumber": {
+      "@id": "acruxcore:versionNumber",
+      "@type": "xsd:integer"
+    },
+    "variables": {
+      "@id": "acruxcore:variables",
+      "@container": "@list"
+    },
+    "GetPromptsIdVersionsNResponse": "acruxcore:GetPromptsIdVersionsNResponse",
+    "PostToolsRequest": "acruxcore:PostToolsRequest",
+    "PostToolsResponse": "acruxcore:PostToolsResponse",
+    "PatchToolsIdRequest": "acruxcore:PatchToolsIdRequest",
+    "PatchToolsIdResponse": "acruxcore:PatchToolsIdResponse",
+    "PostToolsIdAliasesProductionPromoteRequest": "acruxcore:PostToolsIdAliasesProductionPromoteRequest",
+    "PostToolsIdAliasesProductionPromoteResponse": "acruxcore:PostToolsIdAliasesProductionPromoteResponse",
+    "alias": {
+      "@id": "acruxcore:alias",
+      "@type": "xsd:string"
+    },
+    "PostToolsIdVersionsRequest": "acruxcore:PostToolsIdVersionsRequest",
+    "parametersSchema": {
+      "@id": "acruxcore:parametersSchema"
+    },
+    "executor": {
+      "@id": "acruxcore:executor"
+    },
+    "PostToolsIdVersionsResponse": "acruxcore:PostToolsIdVersionsResponse",
+    "PostToolsSyncRequest": "acruxcore:PostToolsSyncRequest",
+    "PostToolsSyncResponse": "acruxcore:PostToolsSyncResponse",
+    "GetTracesResponse": "acruxcore:GetTracesResponse",
+    "GetTracesIdResponse": "acruxcore:GetTracesIdResponse"
+  },
+  "@type": "schema:Dataset",
+  "schema:name": "Acrux Core API JSON-LD context",
+  "schema:description": "A JSON-LD @context for the objects Acrux Core's own API contract declares: one class per component schema, one property per declared field, typed from the contract. Derived by script (derive-json-ld.py, 2026-10-15) from openapi/_ae-authored/acruxcore-openapi-generated.yml.",
+  "dcterms:created": "2026-10-15",
+  "dcterms:source": [
+    "openapi/_ae-authored/acruxcore-openapi-generated.yml"
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/acruxcore/main/json-schema/acruxcore-post-tools-sync-request-schema.json",
+  "title": "PostToolsSyncRequest",
+  "x-generated": "2026-10-15",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/_ae-authored/acruxcore-openapi-generated.yml#/components/schemas/PostToolsSyncRequest",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Tool name"
+    },
+    "description": {
+      "type": "string",
+      "description": "Tool description"
+    },
+    "parametersSchema": {
+      "type": "object",
+      "description": "JSON schema the model reads"
+    },
+    "executor": {
+      "type": "object",
+      "description": "Who runs the tool, e.g. {\"type\":\"client\"}"
+    }
+  },
+  "required": [
+    "name",
+    "description",
+    "parametersSchema",
+    "executor"
+  ]
+}

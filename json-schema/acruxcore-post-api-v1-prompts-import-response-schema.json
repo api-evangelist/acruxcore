@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/acruxcore/main/json-schema/acruxcore-post-api-v1-prompts-import-response-schema.json",
+  "title": "PostApiV1PromptsImportResponse",
+  "x-generated": "2026-10-15",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/_ae-authored/acruxcore-openapi-generated.yml#/components/schemas/PostApiV1PromptsImportResponse",
+  "type": "object",
+  "properties": {
+    "prompt": {
+      "type": "object",
+      "description": "Created prompt."
+    },
+    "prompt.id": {
+      "type": "string",
+      "description": "Prompt identifier."
+    },
+    "prompt.name": {
+      "type": "string",
+      "description": "Name of the created prompt (may be altered on collision)."
+    },
+    "version": {
+      "type": "object",
+      "description": "Created version."
+    },
+    "version.id": {
+      "type": "string",
+      "description": "Version identifier."
+    },
+    "version.versionNumber": {
+      "type": "integer",
+      "description": "Version number."
+    }
+  }
+}

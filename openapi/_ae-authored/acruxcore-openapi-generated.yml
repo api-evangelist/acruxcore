@@ -1,0 +1,1065 @@
+openapi: 3.1.0
+info:
+  title: Acrux Core API
+  version: '2026-10-15'
+  description: 'GENERATED FROM DOCUMENTATION by API Evangelist on 2026-10-15: 20 operation(s) read from 6 public documentation page(s) (each operation
+    names its page in x-source). This is not the provider''s published contract; Acrux Core has published no machine-readable contract that the
+    pipeline could find. Engine: local.'
+  x-evidence-tiers:
+    code-example: 3
+    documentation: 17
+    pages-with-code: 2
+    pages-read: 6
+  x-generated-from: documentation
+  x-provenance: generated
+  x-authored-by: API Evangelist
+  x-generated: '2026-10-15'
+  x-generator: generate-contract-from-docs.py
+  x-engine: local
+  x-sources:
+  - https://docs.acruxcore.com/docs/guides/store-prompts-and-tools-via-api
+  - https://docs.acruxcore.com/api-reference/audit
+  - https://docs.acruxcore.com/api-reference/tools
+  - https://docs.acruxcore.com/api-reference/export
+  - https://docs.acruxcore.com/api-reference/import
+  - https://docs.acruxcore.com/api-reference/traces
+servers:
+- url: https://api.acruxcore.com
+paths:
+  /account/api-keys:
+    get:
+      operationId: get_account_api_keys
+      tags:
+      - Account
+      summary: GET /account/api-keys
+      x-source: https://docs.acruxcore.com/api-reference/traces
+      responses:
+        '200':
+          description: Success (shape read from the example response on the page)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetAccountApiKeysResponse'
+      x-evidence:
+        kind: code-example
+        language: curl
+        snippet: "curl -H \"Authorization: Bearer $ACRUXCORE_API_KEY \" \\ \" $ACRUXCORE_BASE_URL /traces/ec60bcfb-ede3-4160-86bf-dc47f3966025\"\
+          \ \n { \"trace\" : { \"id\" : \"ec60bcfb-ede3-4160-86bf-dc47f3966025\" , \"name\" : \"Say hi\" , \"sessionId\" : null , \"status\" :\
+          \ \"ok\" , \"startedAt\" : \"2026-09-13T20:07:55.139Z\" , \"endedAt\" : \"2026-09-13T20:08:01.318Z\" , \"spanCount\" : 1 , \"totalCostUsd\"\
+          \ : 0.000002375 , \"totalTokens\" : 15 , \""
+  /api/v1:
+    get:
+      operationId: get_api_v1
+      tags:
+      - Api
+      summary: GET /api/v1
+      x-source: https://docs.acruxcore.com/docs/guides/store-prompts-and-tools-via-api
+      responses:
+        '200':
+          description: Success (status as documented)
+      x-evidence:
+        kind: code-example
+        language: curl
+        snippet: "curl and the SDK can read them: \n export ACRUXCORE_API_KEY = < your api key > export ACRUXCORE_BASE_URL = https://api.acruxcore.com/api/v1\
+          \ \n One key, both roles The same Bearer key works for the REST calls below and for the SDK. Write\noperations (creating prompts, tools,\
+          \ and versions) need an owner , admin , or\n editor role — a viewer key gets 403 . \n 2. Store a tool ​ \n A tool is created in two\
+          \ s"
+    post:
+      operationId: post_api_v1
+      tags:
+      - Api
+      summary: POST /api/v1
+      x-source: https://docs.acruxcore.com/docs/guides/store-prompts-and-tools-via-api
+      responses:
+        '201':
+          description: Success (shape read from the example response on the page)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostApiV1Response'
+      x-evidence:
+        kind: code-example
+        language: curl
+        snippet: 'curl -X POST " $ACRUXCORE_BASE_URL /prompts/bf43ef76-e2cf-48ec-a37b-dd03f0edba97/versions" \ -H "Authorization: Bearer $ACRUXCORE_API_KEY
+          " \ -H "Content-Type: application/json" \ -d ''{ "messages": [ {"role":"system","content":"You are a helpful travel assistant. Use the
+          provided tools to answer with concrete, up-to-date facts instead of guessing."}, {"role":"user","content":"What'' " ''"'' s the wea'
+  /api/v1/prompts//versions//traces:
+    get:
+      operationId: get_api_v1_prompts_versions_traces
+      tags:
+      - Api
+      summary: Reverse lineage — every trace with at least one span stamped with that exact prompt version.
+      x-source: https://docs.acruxcore.com/api-reference/traces
+      parameters:
+      - name: page
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Page number (default 1).
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Page size (default 20, max 100).
+      responses:
+        '200':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetApiV1PromptsVersionsTracesResponse'
+      x-evidence:
+        kind: documentation
+  /api/v1/prompts/import:
+    post:
+      operationId: post_api_v1_prompts_import
+      tags:
+      - Api
+      summary: Creates a new prompt with version 1 and two default aliases ( production , staging ) from a previously exported file.
+      x-source: https://docs.acruxcore.com/api-reference/import
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostApiV1PromptsImportRequest'
+      responses:
+        '201':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostApiV1PromptsImportResponse'
+      x-evidence:
+        kind: documentation
+  /api/v1/traces/{id}:
+    get:
+      operationId: get_api_v1_traces_id
+      tags:
+      - Api
+      summary: Traces API
+      x-source: https://docs.acruxcore.com/api-reference/traces
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetApiV1TracesIdResponse'
+      x-evidence:
+        kind: documentation
+  /api/v1/traces/facets/values:
+    get:
+      operationId: get_api_v1_traces_facets_values
+      tags:
+      - Api
+      summary: Traces API
+      x-source: https://docs.acruxcore.com/api-reference/traces
+      responses:
+        '200':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetApiV1TracesFacetsValuesResponse'
+      x-evidence:
+        kind: documentation
+  /api/v1/{v1id}:
+    get:
+      operationId: get_api_v1_v1id
+      tags:
+      - Api
+      summary: Traces API
+      x-source: https://docs.acruxcore.com/api-reference/traces
+      parameters:
+      - name: v1id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetApiV1V1IdResponse'
+      x-evidence:
+        kind: documentation
+        collapsed_from: 3 example path(s) differing only at v1Id
+    post:
+      operationId: post_api_v1_v1id
+      tags:
+      - Api
+      summary: Creates a new tool shell (no versions/aliases yet — commit a version separately).
+      x-source: https://docs.acruxcore.com/api-reference/tools
+      parameters:
+      - name: v1id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostApiV1V1IdRequest'
+      responses:
+        '201':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostApiV1V1IdResponse'
+      x-evidence:
+        kind: documentation
+        collapsed_from: 2 example path(s) differing only at v1Id
+  /prompts:
+    post:
+      operationId: post_prompts
+      tags:
+      - Prompts
+      summary: Store prompts and tools via the API
+      x-source: https://docs.acruxcore.com/docs/guides/store-prompts-and-tools-via-api
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostPromptsRequest'
+      responses:
+        '201':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostPromptsResponse'
+      x-evidence:
+        kind: documentation
+  /prompts/{id}/tools/{toolid}:
+    put:
+      operationId: put_prompts_id_tools_toolid
+      tags:
+      - Prompts
+      summary: Store prompts and tools via the API
+      x-source: https://docs.acruxcore.com/docs/guides/store-prompts-and-tools-via-api
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: toolid
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PutPromptsIdToolsToolidRequest'
+      responses:
+        '200':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PutPromptsIdToolsToolidResponse'
+      x-evidence:
+        kind: documentation
+  /prompts/{id}/versions:
+    post:
+      operationId: post_prompts_id_versions
+      tags:
+      - Prompts
+      summary: Store prompts and tools via the API
+      x-source: https://docs.acruxcore.com/docs/guides/store-prompts-and-tools-via-api
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostPromptsIdVersionsRequest'
+      responses:
+        '201':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostPromptsIdVersionsResponse'
+      x-evidence:
+        kind: documentation
+  /prompts/{id}/versions/{n}:
+    get:
+      operationId: get_prompts_id_versions_n
+      tags:
+      - Prompts
+      summary: Traces API
+      x-source: https://docs.acruxcore.com/api-reference/traces
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: n
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetPromptsIdVersionsNResponse'
+      x-evidence:
+        kind: documentation
+  /tools:
+    post:
+      operationId: post_tools
+      tags:
+      - Tools
+      summary: Store prompts and tools via the API
+      x-source: https://docs.acruxcore.com/docs/guides/store-prompts-and-tools-via-api
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostToolsRequest'
+      responses:
+        '201':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostToolsResponse'
+      x-evidence:
+        kind: documentation
+  /tools/{id}:
+    patch:
+      operationId: patch_tools_id
+      tags:
+      - Tools
+      summary: Partially updates a tool's name and/or description (shell level).
+      x-source: https://docs.acruxcore.com/api-reference/tools
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchToolsIdRequest'
+      responses:
+        '200':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PatchToolsIdResponse'
+      x-evidence:
+        kind: documentation
+  /tools/{id}/aliases/production/promote:
+    post:
+      operationId: post_tools_id_aliases_production_promote
+      tags:
+      - Tools
+      summary: Promote a specific version to the production alias.
+      x-source: https://docs.acruxcore.com/api-reference/tools
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostToolsIdAliasesProductionPromoteRequest'
+      responses:
+        '201':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostToolsIdAliasesProductionPromoteResponse'
+      x-evidence:
+        kind: documentation
+  /tools/{id}/versions:
+    post:
+      operationId: post_tools_id_versions
+      tags:
+      - Tools
+      summary: Store prompts and tools via the API
+      x-source: https://docs.acruxcore.com/docs/guides/store-prompts-and-tools-via-api
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostToolsIdVersionsRequest'
+      responses:
+        '201':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostToolsIdVersionsResponse'
+      x-evidence:
+        kind: documentation
+  /tools/sync:
+    post:
+      operationId: post_tools_sync
+      tags:
+      - Tools
+      summary: Store prompts and tools via the API
+      x-source: https://docs.acruxcore.com/docs/guides/store-prompts-and-tools-via-api
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostToolsSyncRequest'
+      responses:
+        '201':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostToolsSyncResponse'
+      x-evidence:
+        kind: documentation
+  /traces:
+    get:
+      operationId: get_traces
+      tags:
+      - Traces
+      summary: Traces API
+      x-source: https://docs.acruxcore.com/api-reference/traces
+      parameters:
+      - name: from
+        in: query
+        required: false
+        schema:
+          type: string
+        description: ISO‑8601 start of created_at window.
+      - name: to
+        in: query
+        required: false
+        schema:
+          type: string
+        description: ISO‑8601 end of created_at window.
+      - name: status
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Filter by trace status (ok, error, unset).
+      - name: model
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Exact match against any span model.
+      - name: session_id
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Exact match against any span session_id.
+      - name: prompt_version_id
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Exact match against any span prompt_version_id.
+      - name: prompt_id
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Match any version of the given prompt.
+      - name: min_latency_ms
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: Inclusive lower bound on latency.
+      - name: min_cost_usd
+        in: query
+        required: false
+        schema:
+          type: number
+        description: Inclusive lower bound on total cost.
+      - name: min_tokens
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: Inclusive lower bound on total tokens.
+      - name: error_type
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Filter by error type.
+      - name: error_code
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Filter by error code.
+      - name: has_warning
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: Filter traces that have warnings.
+      - name: q
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Free‑text search over names, attributes, input/output.
+      - name: q_in
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Limit q to input, output, or name.
+      - name: tags
+        in: query
+        required: false
+        schema:
+          type: array
+        description: Repeatable tag filter (AND semantics).
+      - name: metadata
+        in: query
+        required: false
+        schema:
+          type: object
+        description: Repeatable metadata key/value filter (AND semantics).
+      - name: page
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: Page number (default 1).
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: Page size (default 20, max 100).
+      responses:
+        '200':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetTracesResponse'
+      x-evidence:
+        kind: documentation
+  /traces/{id}:
+    get:
+      operationId: get_traces_id
+      tags:
+      - Traces
+      summary: Traces API
+      x-source: https://docs.acruxcore.com/api-reference/traces
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetTracesIdResponse'
+      x-evidence:
+        kind: documentation
+components:
+  schemas:
+    GetAccountApiKeysResponse:
+      type: object
+      properties:
+        trail:
+          type: array
+          items:
+            type: object
+            properties:
+              model:
+                type: string
+              modelId:
+                type: string
+              attempts:
+                type: integer
+              credentialId:
+                type: string
+              upstreamModel:
+                type: string
+        warning:
+          type: object
+          properties:
+            type:
+              type: string
+            message:
+              type: string
+        attempts:
+          type: integer
+        cacheHit:
+          type: boolean
+    PostApiV1Response:
+      type: object
+      properties:
+        toolId:
+          type: string
+        toolName:
+          type: string
+        toolAlias:
+          type: string
+        pinnedVersionNumber:
+          type:
+          - string
+          - 'null'
+        'off':
+          type: boolean
+        resolvedVersionNumber:
+          type: integer
+        position:
+          type: integer
+    GetApiV1PromptsVersionsTracesResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          description: Array of trace summary objects.
+        total:
+          type: integer
+          description: Total number of matching traces.
+        page:
+          type: integer
+          description: Current page number.
+        limit:
+          type: integer
+          description: Page size returned.
+    PostApiV1PromptsImportRequest:
+      type: object
+      properties:
+        schemaVersion:
+          type: integer
+          description: Must be 1.
+        exportedAt:
+          type: string
+          description: ISO‑8601 timestamp of the export.
+        prompt:
+          type: object
+          description: Prompt metadata.
+        prompt.name:
+          type: string
+          description: Name of the prompt.
+        prompt.description:
+          type: string
+          description: Optional description.
+        version:
+          type: object
+          description: Version data.
+        version.versionNumber:
+          type: integer
+          description: Version number (defaults to 1).
+        version.messages:
+          type: array
+          description: Array of message objects.
+        version.messages[].role:
+          type: string
+          description: Message role (e.g., system).
+        version.messages[].content:
+          type: string
+          description: Message content with templating.
+        version.variables:
+          type: array
+          description: List of variable names (ignored on import).
+        version.createdAt:
+          type: string
+          description: ISO‑8601 timestamp of version creation.
+      required:
+      - schemaVersion
+      - prompt
+      - prompt.name
+      - version
+      - version.messages
+      - version.messages[].role
+      - version.messages[].content
+    PostApiV1PromptsImportResponse:
+      type: object
+      properties:
+        prompt:
+          type: object
+          description: Created prompt.
+        prompt.id:
+          type: string
+          description: Prompt identifier.
+        prompt.name:
+          type: string
+          description: Name of the created prompt (may be altered on collision).
+        version:
+          type: object
+          description: Created version.
+        version.id:
+          type: string
+          description: Version identifier.
+        version.versionNumber:
+          type: integer
+          description: Version number.
+    GetApiV1TracesIdResponse:
+      type: object
+      properties:
+        trace:
+          type: object
+          description: Trace header fields.
+        spans:
+          type: array
+          description: Array of span objects assembled into a tree.
+    GetApiV1TracesFacetsValuesResponse:
+      type: object
+      properties:
+        values:
+          type: array
+          description: All distinct facet values.
+    GetApiV1V1IdResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          description: List of prompts.
+    PostApiV1V1IdRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Tool name matching ^[a-zA-Z0-9_-]{1,64}$
+        description:
+          type: string
+      required:
+      - name
+    PostApiV1V1IdResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        teamId:
+          type: string
+        createdBy:
+          type: string
+        createdAt:
+          type: string
+        callable:
+          type: boolean
+        versionCount:
+          type: integer
+        latestVersionNumber:
+          type: integer
+        executorType:
+          type: string
+        aliases:
+          type: array
+    PostPromptsRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Prompt name
+        description:
+          type: string
+          description: Prompt description
+      required:
+      - name
+      - description
+    PostPromptsResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        teamId:
+          type: string
+        createdBy:
+          type: string
+        createdAt:
+          type: string
+    PutPromptsIdToolsToolidRequest:
+      type: object
+      properties:
+        tool_alias:
+          type: string
+          description: Alias of the tool version to bind (e.g., "production")
+      required:
+      - tool_alias
+    PutPromptsIdToolsToolidResponse:
+      type: object
+      properties:
+        toolId:
+          type: string
+        toolName:
+          type: string
+        toolAlias:
+          type: string
+        pinnedVersionNumber:
+          type: integer
+        'off':
+          type: boolean
+        resolvedVersionNumber:
+          type: integer
+        position:
+          type: integer
+    PostPromptsIdVersionsRequest:
+      type: object
+      properties:
+        messages:
+          type: array
+          description: Array of message objects with role and content
+      required:
+      - messages
+    PostPromptsIdVersionsResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        promptId:
+          type: string
+        versionNumber:
+          type: integer
+        messages:
+          type: array
+        variables:
+          type: array
+        aliases:
+          type: array
+    GetPromptsIdVersionsNResponse:
+      type: object
+      properties:
+        prompt:
+          type: object
+          description: Prompt definition.
+    PostToolsRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Tool name
+        description:
+          type: string
+          description: Tool description
+      required:
+      - name
+      - description
+    PostToolsResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        teamId:
+          type: string
+        createdBy:
+          type: string
+        createdAt:
+          type: string
+    PatchToolsIdRequest:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+    PatchToolsIdResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        teamId:
+          type: string
+        createdBy:
+          type: string
+        createdAt:
+          type: string
+        callable:
+          type: boolean
+        versionCount:
+          type: integer
+        latestVersionNumber:
+          type: integer
+        executorType:
+          type: string
+        aliases:
+          type: array
+    PostToolsIdAliasesProductionPromoteRequest:
+      type: object
+      properties:
+        versionNumber:
+          type: integer
+          description: Version to promote
+      required:
+      - versionNumber
+    PostToolsIdAliasesProductionPromoteResponse:
+      type: object
+      properties:
+        alias:
+          type: string
+          description: Should be 'production'
+        versionNumber:
+          type: integer
+    PostToolsIdVersionsRequest:
+      type: object
+      properties:
+        description:
+          type: string
+          description: Version description
+        parametersSchema:
+          type: object
+          description: JSON schema for tool parameters
+        executor:
+          type: object
+          description: Who runs the tool, e.g. {"type":"client"}
+      required:
+      - description
+      - parametersSchema
+      - executor
+    PostToolsIdVersionsResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        toolId:
+          type: string
+        versionNumber:
+          type: integer
+        description:
+          type: string
+        parametersSchema:
+          type: object
+        executor:
+          type: object
+        aliases:
+          type: array
+    PostToolsSyncRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Tool name
+        description:
+          type: string
+          description: Tool description
+        parametersSchema:
+          type: object
+          description: JSON schema the model reads
+        executor:
+          type: object
+          description: Who runs the tool, e.g. {"type":"client"}
+      required:
+      - name
+      - description
+      - parametersSchema
+      - executor
+    PostToolsSyncResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        toolId:
+          type: string
+        versionNumber:
+          type: integer
+        description:
+          type: string
+        parametersSchema:
+          type: object
+        executor:
+          type: object
+        aliases:
+          type: array
+    GetTracesResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          description: Array of trace summary objects.
+        total:
+          type: integer
+          description: Total number of matching traces.
+        page:
+          type: integer
+          description: Current page.
+        limit:
+          type: integer
+          description: Page size.
+    GetTracesIdResponse:
+      type: object
+      properties:
+        trace:
+          type: object
+        spans:
+          type: array
+  securitySchemes:
+    bearer:
+      type: http
+      scheme: bearer
+security:
+- bearer: []
+tags:
+- name: Account
+- name: Api
+- name: Prompts
+- name: Tools
+- name: Traces

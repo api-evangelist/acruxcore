@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/acruxcore/main/json-schema/acruxcore-post-api-v1-v1-id-response-schema.json",
+  "title": "PostApiV1V1IdResponse",
+  "x-generated": "2026-10-15",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/_ae-authored/acruxcore-openapi-generated.yml#/components/schemas/PostApiV1V1IdResponse",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "teamId": {
+      "type": "string"
+    },
+    "createdBy": {
+      "type": "string"
+    },
+    "createdAt": {
+      "type": "string"
+    },
+    "callable": {
+      "type": "boolean"
+    },
+    "versionCount": {
+      "type": "integer"
+    },
+    "latestVersionNumber": {
+      "type": "integer"
+    },
+    "executorType": {
+      "type": "string"
+    },
+    "aliases": {
+      "type": "array"
+    }
+  }
+}

@@ -1,0 +1,115 @@
+generated: '2026-10-16'
+method: derived
+generator: derive-mcp-candidate.py
+source:
+- openapi/_ae-authored/acruxcore-openapi-generated.yml
+status: candidate
+deployment:
+  mode: none
+  auth: unknown
+  verified: probed
+note: 'No MCP server was found. The pre-flight posted tools/list to /mcp on api.acruxcore.com, acruxcore.com, docs.acruxcore.com, media.acruxcore.com;
+  verdict opaque (https://media.acruxcore.com/mcp answered 401: the edge authenticates before it routes, which proves nothing either way). Candidate
+  tools below are derived from the 20 operation(s) in the provider''s own OpenAPI (20 listed); they describe what a server WOULD expose, not one
+  that exists.'
+tools:
+- name: get_account_api_keys
+  operationId: get_account_api_keys
+  method: GET
+  path: /account/api-keys
+  description: GET /account/api-keys
+- name: get_api_v1
+  operationId: get_api_v1
+  method: GET
+  path: /api/v1
+  description: GET /api/v1
+- name: post_api_v1
+  operationId: post_api_v1
+  method: POST
+  path: /api/v1
+  description: POST /api/v1
+- name: get_api_v1_prompts_versions_traces
+  operationId: get_api_v1_prompts_versions_traces
+  method: GET
+  path: /api/v1/prompts//versions//traces
+  description: Reverse lineage — every trace with at least one span stamped with that exact prompt version.
+- name: post_api_v1_prompts_import
+  operationId: post_api_v1_prompts_import
+  method: POST
+  path: /api/v1/prompts/import
+  description: Creates a new prompt with version 1 and two default aliases ( production , staging ) from a previously exported file.
+- name: get_api_v1_traces_id
+  operationId: get_api_v1_traces_id
+  method: GET
+  path: /api/v1/traces/{id}
+  description: Traces API
+- name: get_api_v1_traces_facets_values
+  operationId: get_api_v1_traces_facets_values
+  method: GET
+  path: /api/v1/traces/facets/values
+  description: Traces API
+- name: get_api_v1_v1id
+  operationId: get_api_v1_v1id
+  method: GET
+  path: /api/v1/{v1id}
+  description: Traces API
+- name: post_api_v1_v1id
+  operationId: post_api_v1_v1id
+  method: POST
+  path: /api/v1/{v1id}
+  description: Creates a new tool shell (no versions/aliases yet — commit a version separately).
+- name: post_prompts
+  operationId: post_prompts
+  method: POST
+  path: /prompts
+  description: Store prompts and tools via the API
+- name: put_prompts_id_tools_toolid
+  operationId: put_prompts_id_tools_toolid
+  method: PUT
+  path: /prompts/{id}/tools/{toolid}
+  description: Store prompts and tools via the API
+- name: post_prompts_id_versions
+  operationId: post_prompts_id_versions
+  method: POST
+  path: /prompts/{id}/versions
+  description: Store prompts and tools via the API
+- name: get_prompts_id_versions_n
+  operationId: get_prompts_id_versions_n
+  method: GET
+  path: /prompts/{id}/versions/{n}
+  description: Traces API
+- name: post_tools
+  operationId: post_tools
+  method: POST
+  path: /tools
+  description: Store prompts and tools via the API
+- name: patch_tools_id
+  operationId: patch_tools_id
+  method: PATCH
+  path: /tools/{id}
+  description: Partially updates a tool's name and/or description (shell level).
+- name: post_tools_id_aliases_production_promote
+  operationId: post_tools_id_aliases_production_promote
+  method: POST
+  path: /tools/{id}/aliases/production/promote
+  description: Promote a specific version to the production alias.
+- name: post_tools_id_versions
+  operationId: post_tools_id_versions
+  method: POST
+  path: /tools/{id}/versions
+  description: Store prompts and tools via the API
+- name: post_tools_sync
+  operationId: post_tools_sync
+  method: POST
+  path: /tools/sync
+  description: Store prompts and tools via the API
+- name: get_traces
+  operationId: get_traces
+  method: GET
+  path: /traces
+  description: Traces API
+- name: get_traces_id
+  operationId: get_traces_id
+  method: GET
+  path: /traces/{id}
+  description: Traces API

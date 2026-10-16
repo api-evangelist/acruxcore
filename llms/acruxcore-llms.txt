@@ -1,0 +1,156 @@
+# AcruxCore
+
+> AcruxCore is an open-source platform for teams building on LLMs: version your prompts, route every model call through one OpenAI-compatible gateway, trace what happened, catalog the tools your models can call, evaluate the result, and read an audit trail of every change a person made. Apache 2.0, self-hostable, with published SDKs for Python and TypeScript.
+
+The gateway sits in the request path, so a trace records the request that was actually sent rather than a copy reported alongside it. That is the design decision most of these pages come back to.
+
+This documentation is Apache 2.0 and free to use, quote, and train on. Pages are written to be read in full: guides and tutorials each carry the real commands and the real output from a run against a live server, and every benchmark links the script that produced its numbers.
+
+The product site is https://acruxcore.com. The source is at https://github.com/AcruxCore/AcruxCore.
+
+## Start here
+
+The shortest path to understanding what AcruxCore does and how it compares.
+
+- [9 LLM Observability Tools Tested Hands-On (2026)](https://docs.acruxcore.com/blog/hands-on-llm-ops-comparison): We hands-on tested 9 LLM observability tools — Langfuse, Opik, MLflow, Laminar and more — comparing tracing, evals and measured latency, with screenshots of each.
+- [Quickstart](https://docs.acruxcore.com/docs/getting-started/quickstart): Sign up, register a model, author a prompt, and make your first traced LLM call through the AcruxCore gateway in about ten minutes.
+- [Core concepts](https://docs.acruxcore.com/docs/getting-started/core-concepts): The ideas behind AcruxCore: prompt versions and aliases, gateway model resolution, traces and spans, the tool catalog and its executors, and evaluation.
+- [Full-cycle latency across six LLM-ops platforms, measured against real OpenAI](https://docs.acruxcore.com/blog/full-cycle-latency-benchmark): We timed prompt-fetch-plus-completion, not just the model call, across Opik, MLflow, Langfuse, Helicone, Phoenix, and AcruxCore's gateway and gateway-free BYOK modes, against a real OpenAI baseline — then ran it four times to see what's stable and what isn't.
+- [Build a tool-calling agent in the dashboard (no code)](https://docs.acruxcore.com/docs/tutorials/build-a-tool-calling-agent-in-the-dashboard-no-code): Assemble a movie assistant that calls a live public API — two HTTP tools, a secret, and a model — entirely in the dashboard, with no code to run.
+
+## Getting started
+
+What AcruxCore is, the vocabulary, and a first traced call.
+
+- [Introduction](https://docs.acruxcore.com/docs/getting-started/introduction): AcruxCore is one platform where you version prompts, route LLM calls through a gateway, trace every request, keep a catalog of tools, and evaluate quality.
+- [Quickstart](https://docs.acruxcore.com/docs/getting-started/quickstart): Sign up, register a model, author a prompt, and make your first traced LLM call through the AcruxCore gateway in about ten minutes.
+- [Product tour](https://docs.acruxcore.com/docs/getting-started/product-tour): Attach a tool, stream a response, inspect the trace, leave feedback, and turn that feedback into an evaluation. This page covers the steps that come after your first call.
+- [Core concepts](https://docs.acruxcore.com/docs/getting-started/core-concepts): The ideas behind AcruxCore: prompt versions and aliases, gateway model resolution, traces and spans, the tool catalog and its executors, and evaluation.
+
+## Guides
+
+One AcruxCore capability per page, start to finish, with the exact requests and the real output.
+
+- [Create a tool](https://docs.acruxcore.com/docs/guides/create-a-tool): Put a tool in the catalog two ways — a decorated function whose code owns the definition, or a catalog version your code only implements — and pick the owner that fits the project.
+- [Evaluate a prompt against a dataset](https://docs.acruxcore.com/docs/guides/evaluate-a-prompt): Build a dataset from real user feedback or a CSV/JSON test set, run an experiment that sweeps prompt versions and models, and read the run report.
+- [Invite a teammate to your team](https://docs.acruxcore.com/docs/guides/invite-a-teammate): Create a single-use invite link, choose the role it grants, and email it straight to a new teammate to get them into your AcruxCore team.
+- [Route your app's LLM calls through the gateway](https://docs.acruxcore.com/docs/guides/route-calls-through-the-gateway): Add a provider credential, register a model, test it in the Playground, and call the OpenAI-compatible gateway from curl, the SDK, or the OpenAI client.
+- [Trace and inspect an LLM call](https://docs.acruxcore.com/docs/guides/trace-an-llm-call): Every gateway call is traced automatically. Inspect spans, read dashboards, and report your own custom spans from app code with the SDK.
+- [Version a prompt and ship it to production](https://docs.acruxcore.com/docs/guides/version-a-prompt): Create a prompt, commit versions, promote an alias to production, and render it from your app — the full prompt lifecycle in AcruxCore.
+- [Chat, stream, and collect feedback with the SDK](https://docs.acruxcore.com/docs/guides/use-the-sdk-for-chat-and-feedback): Call the gateway from the SDK with chat() and streaming, run a traced tool-calling loop, then read traces back and record feedback — in Node and Python.
+- [Connect a tool to a prompt](https://docs.acruxcore.com/docs/guides/connect-a-tool-to-a-prompt): Bind a catalog tool to a prompt by choosing the tool alias it follows, give one prompt alias its own tools, and see when the tool's code changed underneath you.
+- [Improve a prompt from feedback](https://docs.acruxcore.com/docs/guides/improve-a-prompt-from-feedback): Turn replies your team disagreed with into candidate rewrites of your production prompt, score them against what is live, and promote the one that earns it.
+- [Manage team roles and permissions](https://docs.acruxcore.com/docs/guides/manage-team-roles-and-permissions): See who's on your team, change an existing member's role, and remove their access — the three actions inviting a teammate doesn't cover.
+- [Use conditional logic in prompt templates](https://docs.acruxcore.com/docs/guides/use-conditional-logic-in-prompt-templates): Write Jinja2-style {% if %} conditionals and {% for %} loops inside a prompt template, rendered by AcruxCore's nunjucks-based engine.
+- [Using sessions and traces](https://docs.acruxcore.com/docs/guides/using-sessions-and-traces): Group related prompt calls into a session, follow one call into its trace, leave feedback, and jump back to the prompt that produced it.
+- [Call a prompt's tools from the SDK](https://docs.acruxcore.com/docs/guides/call-a-prompts-tools-from-the-sdk): Every way to run the tools bound to a prompt from the SDK — the two-line shortcut, the loop by hand, and one raw completion — streaming or not.
+- [Diff, export, and import your prompt library](https://docs.acruxcore.com/docs/guides/diff-export-and-import-your-prompt-library): Read a unified diff between two prompt versions, export one as a portable JSON file, and re-import it — including what import does and does not preserve.
+- [Evaluate a prompt with conversation history](https://docs.acruxcore.com/docs/guides/evaluate-a-prompt-with-conversation-history): Carry a session's prior turns into a dataset example so a run, the judge, and the optimizer see the same conversation the model actually answered in.
+- [Read the team audit trail](https://docs.acruxcore.com/docs/guides/read-the-team-audit-trail): See every recorded change in your team — API keys, members, gateway, secrets, prompts and tools — and filter it down to the one action you need to account for.
+- [Scope access with virtual keys](https://docs.acruxcore.com/docs/guides/scope-access-with-virtual-keys): Create a gateway key restricted to one model, a rate cap, and a cache TTL, so a leaked key can't spend outside its job.
+- [Tag and filter traces](https://docs.acruxcore.com/docs/guides/tag-and-filter-traces): Attach tags and metadata to traces, filter them by tag or metadata key/value, and discover what tags your team is using.
+- [Look up the traces a prompt version produced](https://docs.acruxcore.com/docs/guides/look-up-the-traces-a-prompt-version-produced): Find every trace a specific prompt version powered, from the Versions tab or the API, and know when an empty result is expected.
+- [Manage prompts via the SDK](https://docs.acruxcore.com/docs/guides/manage-prompts-via-the-sdk): Create a prompt, commit versions with templated messages, diff, promote aliases, export/import, and delete — the full lifecycle through curl or the SDK, no dashboard required.
+- [Score live traffic with an evaluation rule](https://docs.acruxcore.com/docs/guides/score-live-traffic-with-an-evaluation-rule): Create a standing rule that judges matching production gateway calls automatically, with no dataset and no manual run.
+- [Set spend limits with gateway budgets and rate limits](https://docs.acruxcore.com/docs/guides/set-spend-limits-with-gateway-budgets-and-rate-limits): Cap spend team-wide or per key by day, week, month, or total, and pair it with a request-rate cap — then prove both actually reject a call before it costs anything.
+- [Version and track a tool](https://docs.acruxcore.com/docs/guides/version-and-track-a-tool): Commit a second tool version, move staging ahead of production, read real call volume, error rate and latency, and retire a tool you no longer call.
+- [Evaluate a prompt that reads an image](https://docs.acruxcore.com/docs/guides/evaluate-a-prompt-that-reads-an-image): Store a prompt with an image part, fill the image from a dataset example, run it on several vision models, and read the scores a judge gives after looking at the same image.
+- [Report a tool failure from your own code](https://docs.acruxcore.com/docs/guides/report-a-tool-failure-from-your-own-code): A tool call can fail while the HTTP status says 200. Return a ToolResult from your tool and the failure is recorded as a red span instead of a green one.
+- [Retries and fallbacks: what the gateway does when a provider call fails](https://docs.acruxcore.com/docs/guides/automatic-model-fallbacks): Three separate things retry a failing LLM call, and each is set in a different place. Configure all three, then read two real traces to see which one fired.
+- [Store prompts and tools via the API](https://docs.acruxcore.com/docs/guides/store-prompts-and-tools-via-api): Save a prompt and its tools over the REST API, confirm them in the dashboard, then fetch and stream them from the SDK.
+- [View trace analytics](https://docs.acruxcore.com/docs/guides/view-trace-analytics): Read aggregate volume, error-rate, token, cost, and latency metrics over every trace your team has recorded, grouped by day, model, session, or prompt version.
+- [Configure trace payload capture](https://docs.acruxcore.com/docs/guides/configure-trace-payload-capture): Read and toggle your team's default for whether a trace's request/response bodies get stored on ingest, and override that default for a single request.
+- [Send an image to a model](https://docs.acruxcore.com/docs/guides/send-an-image-to-a-model): Pass an image to a vision model through the gateway, either as a link or as a file, and check what the trace stores.
+- [Write a custom judge prompt](https://docs.acruxcore.com/docs/guides/write-a-custom-judge-prompt): Grade experiment runs and evaluation rules with your own rubric, including examples that have no criteria, and see exactly what the judge model receives.
+- [Send OTel traces to AcruxCore with the SDK helper](https://docs.acruxcore.com/docs/guides/send-otel-traces-with-the-sdk-helper): Wire any OpenTelemetry-instrumented app to AcruxCore's OTLP endpoint in one call with register() — a bare pipeline, one framework, several frameworks, and session grouping, in Python or Node.
+
+## Tutorials
+
+End-to-end builds of something that exists outside AcruxCore — agents, assistants, analysts. Every one ships a runnable script and a notebook.
+
+- [Start here](https://docs.acruxcore.com/docs/tutorials): Eight end-to-end agent builds, arranged from no-code to multi-agent — and a map for picking the one that matches how you want to work.
+- [Build a tool-calling agent in the dashboard (no code)](https://docs.acruxcore.com/docs/tutorials/build-a-tool-calling-agent-in-the-dashboard-no-code): Assemble a movie assistant that calls a live public API — two HTTP tools, a secret, and a model — entirely in the dashboard, with no code to run.
+- [Build a tool-calling agent in Python (no SDK)](https://docs.acruxcore.com/docs/tutorials/build-a-tool-calling-agent-in-python-no-sdk): Register a credential, model, prompt, and tool, then drive a client-side tool-calling loop from plain Python over the REST API — one trace, streaming and non-streaming.
+- [Build a tool-calling agent in Python (SDK)](https://docs.acruxcore.com/docs/tutorials/build-a-tool-calling-agent-in-python-sdk): Set up a model, a client tool, and a prompt in the dashboard, then drive a text-to-SQL data analyst from Python with the async SDK's run_prompt_with_tools — one trace, real SQLite queries, and streaming.
+- [Build a RAG agent without the gateway](https://docs.acruxcore.com/docs/tutorials/build-a-rag-agent-without-the-gateway): Answer questions over your own documents using your own OpenRouter key — calling the provider directly, while prompts, tools, and traces keep working.
+- [Build a ReAct agent](https://docs.acruxcore.com/docs/tutorials/build-a-react-agent): A finance research agent that reasons step by step and calls two real tools, driven by a manual tool-calling loop straight against your own model provider — no gateway.
+- [Build a configurable ReAct agent](https://docs.acruxcore.com/docs/tutorials/build-a-configurable-react-agent): A web-research agent whose model, persona, and search depth all change at call time — just by swapping one alias name, no redeploy and no code change.
+- [Build a supervisor multi-agent system](https://docs.acruxcore.com/docs/tutorials/build-a-supervisor-multi-agent-system): A router that classifies an incoming request and hands it to one of three specialist subagents — finance research, general research, or writing — sharing one trace.
+- [Build a Medical-Information QA Agent](https://docs.acruxcore.com/docs/tutorials/build-a-medical-information-qa-agent): A typed, cited, policy-aware medical-information agent that refuses off-label questions and escalates adverse events, enforced with the gateway's response_format feature — showing both dict and pydantic/zod forms.
+- [Trace a CrewAI Trip-Planning Crew](https://docs.acruxcore.com/docs/tutorials/trace-a-crewai-trip-planner): Build a two-agent CrewAI crew that plans and revises a trip, and watch every agent, tool, and LLM call land in AcruxCore automatically over OTLP — no code change to the crew itself.
+- [Trace an OpenAI Agents SDK Support-Triage System](https://docs.acruxcore.com/docs/tutorials/trace-an-openai-agents-sdk-triage-system): Build a support-triage system with the OpenAI Agents SDK's agent handoffs, and watch the full triage-to-specialist flow land in AcruxCore automatically over OTLP.
+- [Build a travel planner agent](https://docs.acruxcore.com/docs/tutorials/build-a-travel-planner-agent): Give one prompt three tools and let the model decide which to call - flights, weather, currency, or nothing at all.
+- [Trace a LangChain Research Agent](https://docs.acruxcore.com/docs/tutorials/trace-a-langchain-research-agent): Build a two-tool LangChain agent in Python or Node, and watch every chain, tool, and model call land in AcruxCore automatically over OTLP — no AcruxCore code inside the agent.
+
+## Benchmarks and comparisons
+
+Measured write-ups and hands-on comparisons against other LLM-ops platforms. Every number comes from a script committed to the repository, and every competitor screenshot from a real run on that competitor.
+
+- [Braintrust alternative: what changes when the platform runs your tool code](https://docs.acruxcore.com/blog/acruxcore-vs-braintrust): The same prompt and the same tool run on both platforms, with real screenshots. A tool was pushed and executed on Braintrust's runtime, and running their Python SDK turned up a templating bug.
+- [Laminar alternative: SQL over traces vs a prompt gateway](https://docs.acruxcore.com/blog/acruxcore-vs-laminar): A Laminar alternative tested hands-on — one example on self-hosted Laminar and AcruxCore, with real screenshots from both and a 100-round latency benchmark.
+- [Full-cycle latency across six LLM-ops platforms, measured against real OpenAI](https://docs.acruxcore.com/blog/full-cycle-latency-benchmark): We timed prompt-fetch-plus-completion, not just the model call, across Opik, MLflow, Langfuse, Helicone, Phoenix, and AcruxCore's gateway and gateway-free BYOK modes, against a real OpenAI baseline — then ran it four times to see what's stable and what isn't.
+- [MLflow alternative: two gateways, one with guardrails](https://docs.acruxcore.com/blog/acruxcore-vs-mlflow): Considering an MLflow alternative for LLM work? We timed the same prompt through both gateways — MLflow's added +135 to +225 ms, ours +21 to +43 ms.
+- [Helicone alternative: two request-path proxies, measured](https://docs.acruxcore.com/blog/acruxcore-vs-helicone): Weighing a Helicone alternative? Both sit in the request path. We rebuilt one prompt on each, and timed 300 benchmark rounds through both gateways.
+- [Opik alternative: guardrails, PII and online evaluation](https://docs.acruxcore.com/blog/acruxcore-vs-opik): An Opik alternative tested hands-on — one prompt rebuilt on self-hosted Opik and AcruxCore, with real screenshots, an SDK trace and a latency benchmark.
+- [Arize Phoenix alternative: OTel tracing vs a gateway](https://docs.acruxcore.com/blog/acruxcore-vs-phoenix): An Arize Phoenix alternative tested hands-on — one prompt rebuilt on Phoenix and AcruxCore, with real screenshots, an SDK trace and a latency benchmark.
+- [Langfuse alternative: org hierarchy vs a flat team](https://docs.acruxcore.com/blog/acruxcore-vs-langfuse): A Langfuse alternative tested hands-on — the same prompt rebuilt and run on both, with real screenshots, an SDK trace and a measured latency benchmark.
+- [Exact-match gateway caching: latency and cost saved](https://docs.acruxcore.com/blog/exact-match-gateway-caching): We measured the gateway's exact-match response cache against the calls it's built for — a ~100x latency drop on a hit, and zero cost, from a live run.
+- [One gateway, three providers: request shapes compared](https://docs.acruxcore.com/blog/one-gateway-three-providers): The same chat request, translated into Anthropic, Gemini, and OpenAI's own shapes by the gateway's adapters — headers, params, and tool defs, side by side.
+- [9 LLM Observability Tools Tested Hands-On (2026)](https://docs.acruxcore.com/blog/hands-on-llm-ops-comparison): We hands-on tested 9 LLM observability tools — Langfuse, Opik, MLflow, Laminar and more — comparing tracing, evals and measured latency, with screenshots of each.
+- [LangChain vs AcruxCore SDK: the same tool-calling agent](https://docs.acruxcore.com/blog/tool-agent-sdk-langchain-vs-acruxcore): We rewrote the same tool-calling agent with LangChain's create_agent and the AcruxCore SDK's run_tool_loop, ran both live, and compared the code and traces.
+- [Tool-call traces: LangSmith vs AcruxCore](https://docs.acruxcore.com/blog/tool-calling-traces-langsmith-vs-acruxcore): We built the same weather tool twice — a traced Python function on LangSmith, a versioned Tool Catalog entry on AcruxCore — ran both live, and counted the code.
+- [A hands-on walkthrough of the AcruxCore dashboard](https://docs.acruxcore.com/blog/acruxcore-hands-on-walkthrough): A step-by-step walkthrough of prompt versioning, tracing, and evaluation in AcruxCore — the baseline for our competitor comparisons.
+- [Hands-on with Langfuse: prompts, tracing, and datasets](https://docs.acruxcore.com/blog/langfuse-hands-on-walkthrough): A step-by-step walkthrough of Langfuse's prompt management, trace view, and dataset/experiment flow, with screenshots and honest observations.
+- [Hands-on with LangSmith: a real walkthrough](https://docs.acruxcore.com/blog/langsmith-hands-on-walkthrough): A step-by-step, screenshot-backed walkthrough of creating a prompt, running a trace, and building an eval dataset in LangSmith's hosted product.
+- [A hands-on walkthrough of PromptLayer](https://docs.acruxcore.com/blog/promptlayer-hands-on-walkthrough): Logging into hosted PromptLayer, creating and versioning a prompt, running it, and checking what its trace view and evaluation tooling actually show.
+- [How much overhead does an LLM gateway add?](https://docs.acruxcore.com/blog/llm-gateway-overhead): We benchmarked five ways to reach the same OpenAI model — gateway, BYOK, and raw. The gateway's software costs about 42 ms; the rest is network distance.
+- [LangSmith alternative: prompts, gateway and tracing](https://docs.acruxcore.com/blog/acrux-core-vs-langsmith): A LangSmith alternative compared feature by feature — prompt versioning, a request-path gateway, tracing, tools and evals, open source and self-hostable.
+
+## SDK reference
+
+Every method and parameter in the two published SDKs.
+
+- [Node SDK reference](https://docs.acruxcore.com/docs/sdk-reference/node): Every method and parameter in @acruxcoreai/sdk, the Node/TypeScript SDK for AcruxCore — render, chat, tool loops, tracing, feedback, and the tool catalog.
+- [Python SDK reference](https://docs.acruxcore.com/docs/sdk-reference/python): Every method and parameter in acruxcore, the Python SDK for AcruxCore — render, chat, tool loops, tracing, feedback, and the tool catalog.
+
+## Optional
+
+The REST API, one page per domain. Every endpoint here was verified with curl against a running server, and each entry shows the exact request and the exact response it returned.
+
+- [API Keys](https://docs.acruxcore.com/api-reference/api-keys): Create, list, and revoke personal API keys — the Bearer tokens every other endpoint authenticates with.
+- [API Reference](https://docs.acruxcore.com/api-reference): The AcruxCore REST API — every endpoint is curl-verified. Authentication, prompts and versions, the gateway, tracing, tools, and evaluation.
+- [Audit](https://docs.acruxcore.com/api-reference/audit): Read the paginated, newest-first audit trail of changes made to a prompt, a tool, or the whole team.
+- [Authentication](https://docs.acruxcore.com/api-reference/authentication): Generate a Bearer token in the dashboard, then use it on every endpoint in this reference.
+- [Datasets](https://docs.acruxcore.com/api-reference/datasets): Create and manage example sets used by experiments, evaluations, and the optimize loop.
+- [Evaluation Rules](https://docs.acruxcore.com/api-reference/eval-rules): Score live production traffic automatically with a standing LLM-judge rule.
+- [Experiments & Runs](https://docs.acruxcore.com/api-reference/experiments): Sweep a dataset across prompt versions and models, then read back per-cell results and reports.
+- [Export](https://docs.acruxcore.com/api-reference/export): Download a prompt version as a portable JSON file for backup or re-import.
+- [Gateway Budgets](https://docs.acruxcore.com/api-reference/gateway/budgets): Cap spend team-wide or per virtual key, by day, week, month, or total.
+- [Gateway Chat Completions](https://docs.acruxcore.com/api-reference/gateway): Call the OpenAI-compatible gateway endpoint with raw messages or a stored-prompt reference.
+- [Gateway Connections](https://docs.acruxcore.com/api-reference/gateway/connections): Store BYOK provider credentials (OpenAI, Anthropic, Gemini, OpenAI-compatible), encrypted at rest.
+- [Gateway Models](https://docs.acruxcore.com/api-reference/gateway/models): Register a public model name that maps to a credential and an upstream provider model.
+- [Gateway Usage & Lineage](https://docs.acruxcore.com/api-reference/gateway/usage): Read gateway request logs and usage analytics, including which prompt version produced each call.
+- [Gateway Virtual Keys](https://docs.acruxcore.com/api-reference/gateway/keys): Create scoped virtual keys that authenticate gateway calls without exposing your provider credentials.
+- [Import](https://docs.acruxcore.com/api-reference/import): Create a new prompt and its first version from a previously exported JSON file.
+- [Notifications](https://docs.acruxcore.com/api-reference/notifications): Read and change which email notifications you receive, per team — plus the unauthenticated one-click unsubscribe endpoints mail clients call.
+- [Optimize Loop](https://docs.acruxcore.com/api-reference/optimize): Draft, score, and promote LLM-generated prompt rewrites against a dataset.
+- [OTLP Trace Ingestion](https://docs.acruxcore.com/api-reference/traces/otlp): Point any OpenTelemetry exporter — CrewAI, LangChain, LlamaIndex, or a custom OTel SDK — straight at AcruxCore.
+- [Prompt Aliases](https://docs.acruxcore.com/api-reference/prompts/aliases): List, render, and promote named pointers (production/staging) to a specific prompt version.
+- [Prompt Diff](https://docs.acruxcore.com/api-reference/prompts/diff): Get a unified diff between two versions of a prompt's raw template.
+- [Prompt Tool Bindings](https://docs.acruxcore.com/api-reference/prompts/tool-bindings): Connect a tool to a prompt by choosing the tool alias each prompt alias should call — one live write, no new prompt version.
+- [Prompt Versions](https://docs.acruxcore.com/api-reference/prompts/versions): Commit immutable prompt versions and fetch them back by number.
+- [Prompts](https://docs.acruxcore.com/api-reference/prompts): Read, search, and resolve prompts by API — create/edit/delete happen in the dashboard today.
+- [Saved Views](https://docs.acruxcore.com/api-reference/traces/views): Name a filter set on the trace or feedback list so the whole team can apply it in one click.
+- [Sessions](https://docs.acruxcore.com/api-reference/traces/sessions): Group related traces under a shared session id and read them back as one rolled-up view.
+- [Tool Aliases](https://docs.acruxcore.com/api-reference/tools/aliases): List, render, and promote named pointers to a specific tool version.
+- [Tool Execute](https://docs.acruxcore.com/api-reference/tools/execute): Invoke an HTTP-backed tool version server-side and record the call.
+- [Tool Resolve](https://docs.acruxcore.com/api-reference/tools/resolve): Resolve tool names to model-ready function definitions, in one batched call.
+- [Tool Sync](https://docs.acruxcore.com/api-reference/tools/sync): Create-or-commit-or-nothing: reconcile a tool defined in code with the catalog in one call.
+- [Tool Versions](https://docs.acruxcore.com/api-reference/tools/versions): Commit immutable tool versions and fetch them back by number.
+- [Tools](https://docs.acruxcore.com/api-reference/tools): Create, list, update, and delete tools in the Tool Catalog.
+- [Tools Analytics](https://docs.acruxcore.com/api-reference/tools/analytics): Read usage analytics for tool executions.
+- [Trace Analytics](https://docs.acruxcore.com/api-reference/traces/analytics): Read time-series analytics over every span ingested by the gateway or the SDK.
+- [Trace Facets](https://docs.acruxcore.com/api-reference/traces/facets): Discover the distinct tags, metadata keys/values, resolved span models and declared error codes a team has actually used, for populating filter pickers.
+- [Trace Settings](https://docs.acruxcore.com/api-reference/traces/settings): Configure team-wide trace capture behavior, such as whether payloads are stored.
+- [Traces](https://docs.acruxcore.com/api-reference/traces): Ingest and query traces — the record of one request, its spans, tokens, and cost.
+- [Traces Feedback](https://docs.acruxcore.com/api-reference/traces/feedback): Attach and read human feedback (rating, label, comment) on a trace or one of its spans.

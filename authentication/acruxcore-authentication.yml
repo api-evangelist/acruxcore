@@ -1,0 +1,18 @@
+generated: '2026-10-15'
+method: searched
+generator: extract-docs-artifacts.py (local)
+source: https://docs.acruxcore.com/api-reference/api-keys
+sources:
+- https://docs.acruxcore.com/api-reference/api-keys
+- https://docs.acruxcore.com/api-reference/authentication
+- https://docs.acruxcore.com/docs/getting-started/quickstart
+- https://docs.acruxcore.com/docs/getting-started/core-concepts
+description: Every endpoint authenticates with a Bearer API key in the Authorization header.
+schemes:
+- type: http-bearer
+  name: API Key
+  evidence: 'Every endpoint in this reference authenticates the same way: a Bearer API key in the Authorization header.'
+  location: header
+  header: Authorization
+  how_to_obtain: Generate a key in the dashboard (Account & keys → New key) and export it as an environment variable.
+docs: https://docs.acruxcore.com/api-reference/api-keys

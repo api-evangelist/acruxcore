@@ -1,0 +1,14 @@
+generated: '2026-10-15'
+method: searched
+generator: extract-docs-artifacts.py (local)
+source: https://acruxcore.com/pricing
+sources:
+- https://acruxcore.com/pricing
+name: Acrux Core pricing
+audience: developer-api
+pricing_basis: free
+plans:
+- name: Beta Free
+  price_text: Free while we are in beta.
+  description: The whole platform, unlocked. You connect your own provider keys, so the only model spend is the one you already have.
+docs: https://acruxcore.com/pricing

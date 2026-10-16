@@ -1,23 +1,132 @@
 aid: acruxcore
+
 name: Acrux Core
-description: 'Acrux Core is a company surfaced via the API Evangelist harvest backlog (source: g2-catalog)
-  and added to the network as a stub for full-pipeline profiling.'
+
+image: https://acruxcore.com/og-image.png
+
+description: Acrux Core is an open-source LLMOps platform designed for engineering teams to manage, version, and evaluate prompts, gateways, and
+  tools across multiple LLM providers. It offers self-hostable deployment via Docker, a hosted beta, and SDKs for TypeScript and Python. Features
+  include prompt versioning, tool integration, tracing, audit trails, and cost monitoring, all under an Apache-2.0 license.
+
 url: https://raw.githubusercontent.com/api-evangelist/acruxcore/refs/heads/main/apis.yml
+
 x-type: company
+
 x-source: harvest:g2-catalog
-x-tier: stub
-x-tier-reason: harvest
+
+x-tier: profiled
+x-tier-reason: enrichment pass 2026-10-15 (modular-v1; was harvest)
+
 specificationVersion: '0.20'
+
 created: '2026-10-15'
+
 modified: '2026-10-15'
+
 tags:
-- Company
-apis: []
+- LLMOps
+- OpenSource
+- Platform
+- Engineering
+- AI
+
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
+
 common:
+- type: RateLimits
+  url: rate-limits/acruxcore-rate-limits.yml
+- type: Plans
+  url: plans/acruxcore-plans-pricing.yml
+- type: Spectral
+  url: rules/acruxcore-rules.yml
+- type: JSONLD
+  url: json-ld/acruxcore-context.jsonld
+- type: Vocabulary
+  url: vocabulary/acruxcore-vocabulary.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: DataModel
+  url: data-model/acruxcore-data-model.yml
+- type: Authentication
+  url: authentication/acruxcore-authentication.yml
+- type: Conformance
+  url: conformance/acruxcore-conformance.yml
+- type: LLMsTxt
+  url: llms/acruxcore-llms.txt
+- type: WellKnown
+  url: well-known/acruxcore-well-known.yml
+- type: Hosts
+  url: hosts/acruxcore-hosts.yml
+- type: Vendors
+  url: vendors/acruxcore-vendors.yml
+- type: Packages
+  url: packages/acruxcore-packages.yml
+- type: Security
+  url: https://acruxcore.com/security
+- type: SDKs
+  url: https://acruxcore.com/sdk
+- type: Newsroom
+  url: https://acruxcore.com/press
+- type: VulnerabilityDisclosure
+  url: security/acruxcore-vulnerability-disclosure.yml
+- type: DomainSecurity
+  url: security/acruxcore-domain-security.yml
 - type: Website
   url: https://acruxcore.com/
+- type: Documentation
+  url: https://docs.acruxcore.com/
+- type: Pricing
+  url: https://acruxcore.com/pricing
+- type: GettingStarted
+  url: https://docs.acruxcore.com/docs/getting-started/quickstart
+- type: APIReference
+  url: https://docs.acruxcore.com/api-reference
+- type: Blog
+  url: https://docs.acruxcore.com/blog
+- type: Support
+  url: https://acruxcore.com/contact
+- type: PrivacyPolicy
+  url: https://acruxcore.com/privacy
+- type: TermsOfService
+  url: https://acruxcore.com/terms
+
+apis:
+- name: Acrux Core API
+  description: The AcruxCore REST API provides endpoints for authentication, prompts, versions, gateway, tracing, tools, and evaluation.
+  humanURL: https://docs.acruxcore.com/api-reference
+  baseURL: null
+  properties: []
+  aid: acruxcore:acrux-core-api
+- aid: acruxcore:acruxcore-api
+  name: Acrux Core API
+  description: 'Acrux Core API as documented publicly: 20 operations. Contract generated from the documentation by API Evangelist (2026-10-15);
+
+    not the provider''s own document.'
+  humanURL: https://docs.acruxcore.com/docs/guides/store-prompts-and-tools-via-api
+  baseURL: https://api.acruxcore.com
+  properties:
+  - type: OpenAPI
+    url: openapi/_ae-authored/acruxcore-openapi-generated.yml
+    x-provenance: generated
+  - type: JSONSchema
+    url: json-schema/acruxcore-post-api-v1-prompts-import-request-schema.json
+  - type: JSONSchema
+    url: json-schema/acruxcore-post-api-v1-prompts-import-response-schema.json
+  - type: JSONSchema
+    url: json-schema/acruxcore-get-account-api-keys-response-schema.json
+  - type: JSONSchema
+    url: json-schema/acruxcore-post-tools-sync-request-schema.json
+  - type: JSONSchema
+    url: json-schema/acruxcore-patch-tools-id-response-schema.json
+  - type: JSONSchema
+    url: json-schema/acruxcore-post-api-v1-v1-id-response-schema.json
+x-enrichment:
+  date: '2026-10-15'
+  status: enriched
+  artifacts_added: 27
+  pass: modular-v1
+  engine: identity=local,contract=local,surfaces=local,docs=local,regulatory=local
