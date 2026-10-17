@@ -96,22 +96,111 @@ common:
 
 apis:
 - name: Acrux Core API
-  description: The AcruxCore REST API provides endpoints for authentication, prompts, versions, gateway, tracing, tools, and evaluation.
+  description: >-
+    The AcruxCore REST API provides endpoints for authentication, prompts, versions, gateway, tracing,
+    tools, and evaluation.
   humanURL: https://docs.acruxcore.com/api-reference
   baseURL: null
   properties: []
   aid: acruxcore:acrux-core-api
-- aid: acruxcore:acruxcore-api
-  name: Acrux Core API
-  description: 'Acrux Core API as documented publicly: 20 operations. Contract generated from the documentation by API Evangelist (2026-10-15);
-
-    not the provider''s own document.'
-  humanURL: https://docs.acruxcore.com/docs/guides/store-prompts-and-tools-via-api
+- aid: acruxcore:acruxcore-account-api
+  name: Acrux Core Account API
+  description: The Account API from Acrux Core — 1 operation(s) for account.
+  humanURL: https://docs.acruxcore.com/api-reference
   baseURL: https://api.acruxcore.com
+  tags:
+  - Account
   properties:
   - type: OpenAPI
-    url: openapi/_ae-authored/acruxcore-openapi-generated.yml
-    x-provenance: generated
+    url: openapi/acruxcore-account-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/acruxcore-post-api-v1-prompts-import-request-schema.json
+  - type: JSONSchema
+    url: json-schema/acruxcore-post-api-v1-prompts-import-response-schema.json
+  - type: JSONSchema
+    url: json-schema/acruxcore-get-account-api-keys-response-schema.json
+  - type: JSONSchema
+    url: json-schema/acruxcore-post-tools-sync-request-schema.json
+  - type: JSONSchema
+    url: json-schema/acruxcore-patch-tools-id-response-schema.json
+  - type: JSONSchema
+    url: json-schema/acruxcore-post-api-v1-v1-id-response-schema.json
+- aid: acruxcore:acruxcore-acrux-core-api-api
+  name: Acrux Core Acrux Core API
+  description: The Acrux Core API API from Acrux Core — 2 operation(s) for acrux core api.
+  humanURL: https://docs.acruxcore.com/api-reference
+  baseURL: https://api.acruxcore.com
+  tags:
+  - Acrux Core API
+  properties:
+  - type: OpenAPI
+    url: openapi/acruxcore-acrux-core-api-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/acruxcore-post-api-v1-prompts-import-request-schema.json
+  - type: JSONSchema
+    url: json-schema/acruxcore-post-api-v1-prompts-import-response-schema.json
+  - type: JSONSchema
+    url: json-schema/acruxcore-get-account-api-keys-response-schema.json
+  - type: JSONSchema
+    url: json-schema/acruxcore-post-tools-sync-request-schema.json
+  - type: JSONSchema
+    url: json-schema/acruxcore-patch-tools-id-response-schema.json
+  - type: JSONSchema
+    url: json-schema/acruxcore-post-api-v1-v1-id-response-schema.json
+- aid: acruxcore:acruxcore-prompts-api
+  name: Acrux Core Prompts API
+  description: The Prompts API from Acrux Core — 6 operation(s) for prompts.
+  humanURL: https://docs.acruxcore.com/api-reference
+  baseURL: https://api.acruxcore.com
+  tags:
+  - Prompts
+  properties:
+  - type: OpenAPI
+    url: openapi/acruxcore-prompts-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/acruxcore-post-api-v1-prompts-import-request-schema.json
+  - type: JSONSchema
+    url: json-schema/acruxcore-post-api-v1-prompts-import-response-schema.json
+  - type: JSONSchema
+    url: json-schema/acruxcore-get-account-api-keys-response-schema.json
+  - type: JSONSchema
+    url: json-schema/acruxcore-post-tools-sync-request-schema.json
+  - type: JSONSchema
+    url: json-schema/acruxcore-patch-tools-id-response-schema.json
+  - type: JSONSchema
+    url: json-schema/acruxcore-post-api-v1-v1-id-response-schema.json
+- aid: acruxcore:acruxcore-tools-api
+  name: Acrux Core Tools API
+  description: The Tools API from Acrux Core — 5 operation(s) for tools.
+  humanURL: https://docs.acruxcore.com/api-reference
+  baseURL: https://api.acruxcore.com
+  tags:
+  - Tools
+  properties:
+  - type: OpenAPI
+    url: openapi/acruxcore-tools-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/acruxcore-post-api-v1-prompts-import-request-schema.json
+  - type: JSONSchema
+    url: json-schema/acruxcore-post-api-v1-prompts-import-response-schema.json
+  - type: JSONSchema
+    url: json-schema/acruxcore-get-account-api-keys-response-schema.json
+  - type: JSONSchema
+    url: json-schema/acruxcore-post-tools-sync-request-schema.json
+  - type: JSONSchema
+    url: json-schema/acruxcore-patch-tools-id-response-schema.json
+  - type: JSONSchema
+    url: json-schema/acruxcore-post-api-v1-v1-id-response-schema.json
+- aid: acruxcore:acruxcore-traces-api
+  name: Acrux Core Traces API
+  description: The Traces API from Acrux Core — 4 operation(s) for traces.
+  humanURL: https://docs.acruxcore.com/api-reference
+  baseURL: https://api.acruxcore.com
+  tags:
+  - Traces
+  properties:
+  - type: OpenAPI
+    url: openapi/acruxcore-traces-api-openapi.yml
   - type: JSONSchema
     url: json-schema/acruxcore-post-api-v1-prompts-import-request-schema.json
   - type: JSONSchema

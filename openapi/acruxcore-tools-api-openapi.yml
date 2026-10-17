@@ -1,0 +1,309 @@
+openapi: 3.2.0
+info:
+  title: Acrux Core Tools API
+  version: '2026-10-15'
+  description: 'GENERATED FROM DOCUMENTATION by API Evangelist on 2026-10-15: 20 operation(s) read from 6 public documentation page(s) (each operation names its page in x-source). This is not the provider''s published contract; Acrux Core has published no machine-readable contract that the pipeline could find. Engine: local.'
+  x-evidence-tiers:
+    code-example: 3
+    documentation: 17
+    pages-with-code: 2
+    pages-read: 6
+  x-generated-from: documentation
+  x-provenance: generated
+  x-authored-by: API Evangelist
+  x-generated: '2026-10-15'
+  x-generator: generate-contract-from-docs.py
+  x-engine: local
+  x-sources:
+  - https://docs.acruxcore.com/docs/guides/store-prompts-and-tools-via-api
+  - https://docs.acruxcore.com/api-reference/audit
+  - https://docs.acruxcore.com/api-reference/tools
+  - https://docs.acruxcore.com/api-reference/export
+  - https://docs.acruxcore.com/api-reference/import
+  - https://docs.acruxcore.com/api-reference/traces
+servers:
+- url: https://api.acruxcore.com
+security:
+- bearer: []
+tags:
+- name: Tools
+paths:
+  /tools:
+    post:
+      operationId: post_tools
+      tags:
+      - Tools
+      summary: Store prompts and tools via the API
+      x-source: https://docs.acruxcore.com/docs/guides/store-prompts-and-tools-via-api
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostToolsRequest'
+      responses:
+        '201':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostToolsResponse'
+      x-evidence:
+        kind: documentation
+  /tools/{id}:
+    patch:
+      operationId: patch_tools_id
+      tags:
+      - Tools
+      summary: Partially updates a tool's name and/or description (shell level)
+      x-source: https://docs.acruxcore.com/api-reference/tools
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchToolsIdRequest'
+      responses:
+        '200':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PatchToolsIdResponse'
+      x-evidence:
+        kind: documentation
+  /tools/{id}/aliases/production/promote:
+    post:
+      operationId: post_tools_id_aliases_production_promote
+      tags:
+      - Tools
+      summary: Promote a specific version to the production alias
+      x-source: https://docs.acruxcore.com/api-reference/tools
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostToolsIdAliasesProductionPromoteRequest'
+      responses:
+        '201':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostToolsIdAliasesProductionPromoteResponse'
+      x-evidence:
+        kind: documentation
+  /tools/{id}/versions:
+    post:
+      operationId: post_tools_id_versions
+      tags:
+      - Tools
+      summary: Store prompts and tools via the API
+      x-source: https://docs.acruxcore.com/docs/guides/store-prompts-and-tools-via-api
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostToolsIdVersionsRequest'
+      responses:
+        '201':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostToolsIdVersionsResponse'
+      x-evidence:
+        kind: documentation
+  /tools/sync:
+    post:
+      operationId: post_tools_sync
+      tags:
+      - Tools
+      summary: Store prompts and tools via the API
+      x-source: https://docs.acruxcore.com/docs/guides/store-prompts-and-tools-via-api
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostToolsSyncRequest'
+      responses:
+        '201':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostToolsSyncResponse'
+      x-evidence:
+        kind: documentation
+components:
+  schemas:
+    PostToolsSyncRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Tool name
+        description:
+          type: string
+          description: Tool description
+        parametersSchema:
+          type: object
+          description: JSON schema the model reads
+        executor:
+          type: object
+          description: Who runs the tool, e.g. {"type":"client"}
+      required:
+      - name
+      - description
+      - parametersSchema
+      - executor
+    PostToolsIdVersionsRequest:
+      type: object
+      properties:
+        description:
+          type: string
+          description: Version description
+        parametersSchema:
+          type: object
+          description: JSON schema for tool parameters
+        executor:
+          type: object
+          description: Who runs the tool, e.g. {"type":"client"}
+      required:
+      - description
+      - parametersSchema
+      - executor
+    PostToolsRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Tool name
+        description:
+          type: string
+          description: Tool description
+      required:
+      - name
+      - description
+    PatchToolsIdResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        teamId:
+          type: string
+        createdBy:
+          type: string
+        createdAt:
+          type: string
+        callable:
+          type: boolean
+        versionCount:
+          type: integer
+        latestVersionNumber:
+          type: integer
+        executorType:
+          type: string
+        aliases:
+          type: array
+    PostToolsIdVersionsResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        toolId:
+          type: string
+        versionNumber:
+          type: integer
+        description:
+          type: string
+        parametersSchema:
+          type: object
+        executor:
+          type: object
+        aliases:
+          type: array
+    PostToolsSyncResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        toolId:
+          type: string
+        versionNumber:
+          type: integer
+        description:
+          type: string
+        parametersSchema:
+          type: object
+        executor:
+          type: object
+        aliases:
+          type: array
+    PatchToolsIdRequest:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+    PostToolsResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        teamId:
+          type: string
+        createdBy:
+          type: string
+        createdAt:
+          type: string
+    PostToolsIdAliasesProductionPromoteResponse:
+      type: object
+      properties:
+        alias:
+          type: string
+          description: Should be 'production'
+        versionNumber:
+          type: integer
+    PostToolsIdAliasesProductionPromoteRequest:
+      type: object
+      properties:
+        versionNumber:
+          type: integer
+          description: Version to promote
+      required:
+      - versionNumber
+  securitySchemes:
+    bearer:
+      type: http
+      scheme: bearer

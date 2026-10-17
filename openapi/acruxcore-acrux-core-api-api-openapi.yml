@@ -1,0 +1,178 @@
+openapi: 3.2.0
+info:
+  title: Acrux Core API
+  version: '2026-10-15'
+  description: 'GENERATED FROM DOCUMENTATION by API Evangelist on 2026-10-15: 20 operation(s) read from 6 public documentation page(s) (each operation names its page in x-source). This is not the provider''s published contract; Acrux Core has published no machine-readable contract that the pipeline could find. Engine: local.'
+  x-evidence-tiers:
+    code-example: 3
+    documentation: 17
+    pages-with-code: 2
+    pages-read: 6
+  x-generated-from: documentation
+  x-provenance: generated
+  x-authored-by: API Evangelist
+  x-generated: '2026-10-15'
+  x-generator: generate-contract-from-docs.py
+  x-engine: local
+  x-sources:
+  - https://docs.acruxcore.com/docs/guides/store-prompts-and-tools-via-api
+  - https://docs.acruxcore.com/api-reference/audit
+  - https://docs.acruxcore.com/api-reference/tools
+  - https://docs.acruxcore.com/api-reference/export
+  - https://docs.acruxcore.com/api-reference/import
+  - https://docs.acruxcore.com/api-reference/traces
+servers:
+- url: https://api.acruxcore.com
+security:
+- bearer: []
+tags:
+- name: Acrux Core API
+paths:
+  /api/v1:
+    get:
+      operationId: get_api_v1
+      tags:
+      - Acrux Core API
+      summary: GET /api/v1
+      x-source: https://docs.acruxcore.com/docs/guides/store-prompts-and-tools-via-api
+      responses:
+        '200':
+          description: Success (status as documented)
+      x-evidence:
+        kind: code-example
+        language: curl
+        snippet: "curl and the SDK can read them: \n export ACRUXCORE_API_KEY = < your api key > export ACRUXCORE_BASE_URL = https://api.acruxcore.com/api/v1 \n One key, both roles The same Bearer key works for the REST calls below and for the SDK. Write\noperations (creating prompts, tools, and versions) need an owner , admin , or\n editor role — a viewer key gets 403 . \n 2. Store a tool ​ \n A tool is created in two s"
+    post:
+      operationId: post_api_v1
+      tags:
+      - Acrux Core API
+      summary: POST /api/v1
+      x-source: https://docs.acruxcore.com/docs/guides/store-prompts-and-tools-via-api
+      responses:
+        '201':
+          description: Success (shape read from the example response on the page)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostApiV1Response'
+      x-evidence:
+        kind: code-example
+        language: curl
+        snippet: 'curl -X POST " $ACRUXCORE_BASE_URL /prompts/bf43ef76-e2cf-48ec-a37b-dd03f0edba97/versions" \ -H "Authorization: Bearer $ACRUXCORE_API_KEY " \ -H "Content-Type: application/json" \ -d ''{ "messages": [ {"role":"system","content":"You are a helpful travel assistant. Use the provided tools to answer with concrete, up-to-date facts instead of guessing."}, {"role":"user","content":"What'' " ''"'' s the wea'
+  /api/v1/{v1id}:
+    get:
+      operationId: get_api_v1_v1id
+      tags:
+      - Acrux Core API
+      summary: Traces API
+      x-source: https://docs.acruxcore.com/api-reference/traces
+      parameters:
+      - name: v1id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetApiV1V1IdResponse'
+      x-evidence:
+        kind: documentation
+        collapsed_from: 3 example path(s) differing only at v1Id
+    post:
+      operationId: post_api_v1_v1id
+      tags:
+      - Acrux Core API
+      summary: Creates a new tool shell (no versions/aliases yet — commit a version separately)
+      x-source: https://docs.acruxcore.com/api-reference/tools
+      parameters:
+      - name: v1id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostApiV1V1IdRequest'
+      responses:
+        '201':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostApiV1V1IdResponse'
+      x-evidence:
+        kind: documentation
+        collapsed_from: 2 example path(s) differing only at v1Id
+components:
+  schemas:
+    PostApiV1V1IdResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        teamId:
+          type: string
+        createdBy:
+          type: string
+        createdAt:
+          type: string
+        callable:
+          type: boolean
+        versionCount:
+          type: integer
+        latestVersionNumber:
+          type: integer
+        executorType:
+          type: string
+        aliases:
+          type: array
+    PostApiV1Response:
+      type: object
+      properties:
+        toolId:
+          type: string
+        toolName:
+          type: string
+        toolAlias:
+          type: string
+        pinnedVersionNumber:
+          type:
+          - string
+          - 'null'
+        'off':
+          type: boolean
+        resolvedVersionNumber:
+          type: integer
+        position:
+          type: integer
+    PostApiV1V1IdRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Tool name matching ^[a-zA-Z0-9_-]{1,64}$
+        description:
+          type: string
+      required:
+      - name
+    GetApiV1V1IdResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          description: List of prompts.
+  securitySchemes:
+    bearer:
+      type: http
+      scheme: bearer

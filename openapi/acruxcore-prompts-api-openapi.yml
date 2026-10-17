@@ -1,0 +1,361 @@
+openapi: 3.2.0
+info:
+  title: Acrux Core Prompts API
+  version: '2026-10-15'
+  description: 'GENERATED FROM DOCUMENTATION by API Evangelist on 2026-10-15: 20 operation(s) read from 6 public documentation page(s) (each operation names its page in x-source). This is not the provider''s published contract; Acrux Core has published no machine-readable contract that the pipeline could find. Engine: local.'
+  x-evidence-tiers:
+    code-example: 3
+    documentation: 17
+    pages-with-code: 2
+    pages-read: 6
+  x-generated-from: documentation
+  x-provenance: generated
+  x-authored-by: API Evangelist
+  x-generated: '2026-10-15'
+  x-generator: generate-contract-from-docs.py
+  x-engine: local
+  x-sources:
+  - https://docs.acruxcore.com/docs/guides/store-prompts-and-tools-via-api
+  - https://docs.acruxcore.com/api-reference/audit
+  - https://docs.acruxcore.com/api-reference/tools
+  - https://docs.acruxcore.com/api-reference/export
+  - https://docs.acruxcore.com/api-reference/import
+  - https://docs.acruxcore.com/api-reference/traces
+servers:
+- url: https://api.acruxcore.com
+security:
+- bearer: []
+tags:
+- name: Prompts
+paths:
+  /api/v1/prompts//versions//traces:
+    get:
+      operationId: get_api_v1_prompts_versions_traces
+      tags:
+      - Prompts
+      summary: Reverse lineage — every trace with at least one span stamped with that exact…
+      x-source: https://docs.acruxcore.com/api-reference/traces
+      parameters:
+      - name: page
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Page number (default 1).
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Page size (default 20, max 100).
+      responses:
+        '200':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetApiV1PromptsVersionsTracesResponse'
+      x-evidence:
+        kind: documentation
+  /api/v1/prompts/import:
+    post:
+      operationId: post_api_v1_prompts_import
+      tags:
+      - Prompts
+      summary: Creates a new prompt with version 1 and two default aliases ( production…
+      x-source: https://docs.acruxcore.com/api-reference/import
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostApiV1PromptsImportRequest'
+      responses:
+        '201':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostApiV1PromptsImportResponse'
+      x-evidence:
+        kind: documentation
+  /prompts:
+    post:
+      operationId: post_prompts
+      tags:
+      - Prompts
+      summary: Store prompts and tools via the API
+      x-source: https://docs.acruxcore.com/docs/guides/store-prompts-and-tools-via-api
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostPromptsRequest'
+      responses:
+        '201':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostPromptsResponse'
+      x-evidence:
+        kind: documentation
+  /prompts/{id}/tools/{toolid}:
+    put:
+      operationId: put_prompts_id_tools_toolid
+      tags:
+      - Prompts
+      summary: Store prompts and tools via the API
+      x-source: https://docs.acruxcore.com/docs/guides/store-prompts-and-tools-via-api
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: toolid
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PutPromptsIdToolsToolidRequest'
+      responses:
+        '200':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PutPromptsIdToolsToolidResponse'
+      x-evidence:
+        kind: documentation
+  /prompts/{id}/versions:
+    post:
+      operationId: post_prompts_id_versions
+      tags:
+      - Prompts
+      summary: Store prompts and tools via the API
+      x-source: https://docs.acruxcore.com/docs/guides/store-prompts-and-tools-via-api
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostPromptsIdVersionsRequest'
+      responses:
+        '201':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostPromptsIdVersionsResponse'
+      x-evidence:
+        kind: documentation
+  /prompts/{id}/versions/{n}:
+    get:
+      operationId: get_prompts_id_versions_n
+      tags:
+      - Prompts
+      summary: Traces API
+      x-source: https://docs.acruxcore.com/api-reference/traces
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: n
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetPromptsIdVersionsNResponse'
+      x-evidence:
+        kind: documentation
+components:
+  schemas:
+    GetApiV1PromptsVersionsTracesResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          description: Array of trace summary objects.
+        total:
+          type: integer
+          description: Total number of matching traces.
+        page:
+          type: integer
+          description: Current page number.
+        limit:
+          type: integer
+          description: Page size returned.
+    PutPromptsIdToolsToolidResponse:
+      type: object
+      properties:
+        toolId:
+          type: string
+        toolName:
+          type: string
+        toolAlias:
+          type: string
+        pinnedVersionNumber:
+          type: integer
+        'off':
+          type: boolean
+        resolvedVersionNumber:
+          type: integer
+        position:
+          type: integer
+    PutPromptsIdToolsToolidRequest:
+      type: object
+      properties:
+        tool_alias:
+          type: string
+          description: Alias of the tool version to bind (e.g., "production")
+      required:
+      - tool_alias
+    PostPromptsResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        teamId:
+          type: string
+        createdBy:
+          type: string
+        createdAt:
+          type: string
+    GetPromptsIdVersionsNResponse:
+      type: object
+      properties:
+        prompt:
+          type: object
+          description: Prompt definition.
+    PostPromptsIdVersionsResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        promptId:
+          type: string
+        versionNumber:
+          type: integer
+        messages:
+          type: array
+        variables:
+          type: array
+        aliases:
+          type: array
+    PostApiV1PromptsImportResponse:
+      type: object
+      properties:
+        prompt:
+          type: object
+          description: Created prompt.
+        prompt.id:
+          type: string
+          description: Prompt identifier.
+        prompt.name:
+          type: string
+          description: Name of the created prompt (may be altered on collision).
+        version:
+          type: object
+          description: Created version.
+        version.id:
+          type: string
+          description: Version identifier.
+        version.versionNumber:
+          type: integer
+          description: Version number.
+    PostApiV1PromptsImportRequest:
+      type: object
+      properties:
+        schemaVersion:
+          type: integer
+          description: Must be 1.
+        exportedAt:
+          type: string
+          description: ISO‑8601 timestamp of the export.
+        prompt:
+          type: object
+          description: Prompt metadata.
+        prompt.name:
+          type: string
+          description: Name of the prompt.
+        prompt.description:
+          type: string
+          description: Optional description.
+        version:
+          type: object
+          description: Version data.
+        version.versionNumber:
+          type: integer
+          description: Version number (defaults to 1).
+        version.messages:
+          type: array
+          description: Array of message objects.
+        version.messages[].role:
+          type: string
+          description: Message role (e.g., system).
+        version.messages[].content:
+          type: string
+          description: Message content with templating.
+        version.variables:
+          type: array
+          description: List of variable names (ignored on import).
+        version.createdAt:
+          type: string
+          description: ISO‑8601 timestamp of version creation.
+      required:
+      - schemaVersion
+      - prompt
+      - prompt.name
+      - version
+      - version.messages
+      - version.messages[].role
+      - version.messages[].content
+    PostPromptsIdVersionsRequest:
+      type: object
+      properties:
+        messages:
+          type: array
+          description: Array of message objects with role and content
+      required:
+      - messages
+    PostPromptsRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Prompt name
+        description:
+          type: string
+          description: Prompt description
+      required:
+      - name
+      - description
+  securitySchemes:
+    bearer:
+      type: http
+      scheme: bearer

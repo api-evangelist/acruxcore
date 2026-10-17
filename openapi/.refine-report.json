@@ -1,0 +1,31 @@
+{
+  "provider": "acruxcore",
+  "sources": [
+    "_ae-authored/acruxcore-openapi-generated.yml"
+  ],
+  "outputs": [
+    "acruxcore-account-api-openapi.yml",
+    "acruxcore-acrux-core-api-api-openapi.yml",
+    "acruxcore-prompts-api-openapi.yml",
+    "acruxcore-tools-api-openapi.yml",
+    "acruxcore-traces-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [
+    "sourced from openapi/_original/ (0 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "acruxcore-openapi-generated.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "acruxcore-openapi-generated.yml: tagged paths GET /api/v1 -> Acrux Core API",
+    "acruxcore-openapi-generated.yml: tagged paths POST /api/v1 -> Acrux Core API",
+    "acruxcore-openapi-generated.yml: tagged paths GET /api/v1/prompts//versions//traces -> Prompts",
+    "acruxcore-openapi-generated.yml: tagged paths POST /api/v1/prompts/import -> Prompts",
+    "acruxcore-openapi-generated.yml: tagged paths GET /api/v1/traces/{id} -> Traces",
+    "acruxcore-openapi-generated.yml: tagged paths GET /api/v1/traces/facets/values -> Traces",
+    "acruxcore-openapi-generated.yml: tagged paths GET /api/v1/{v1id} -> Acrux Core API",
+    "acruxcore-openapi-generated.yml: tagged paths POST /api/v1/{v1id} -> Acrux Core API",
+    "acruxcore-openapi-generated.yml: declared missing tag: Acrux Core API",
+    "apis.yml register: written (+5 apis, 6 total)"
+  ],
+  "skipped": []
+}

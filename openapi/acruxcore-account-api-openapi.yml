@@ -1,0 +1,83 @@
+openapi: 3.2.0
+info:
+  title: Acrux Core Account API
+  version: '2026-10-15'
+  description: 'GENERATED FROM DOCUMENTATION by API Evangelist on 2026-10-15: 20 operation(s) read from 6 public documentation page(s) (each operation names its page in x-source). This is not the provider''s published contract; Acrux Core has published no machine-readable contract that the pipeline could find. Engine: local.'
+  x-evidence-tiers:
+    code-example: 3
+    documentation: 17
+    pages-with-code: 2
+    pages-read: 6
+  x-generated-from: documentation
+  x-provenance: generated
+  x-authored-by: API Evangelist
+  x-generated: '2026-10-15'
+  x-generator: generate-contract-from-docs.py
+  x-engine: local
+  x-sources:
+  - https://docs.acruxcore.com/docs/guides/store-prompts-and-tools-via-api
+  - https://docs.acruxcore.com/api-reference/audit
+  - https://docs.acruxcore.com/api-reference/tools
+  - https://docs.acruxcore.com/api-reference/export
+  - https://docs.acruxcore.com/api-reference/import
+  - https://docs.acruxcore.com/api-reference/traces
+servers:
+- url: https://api.acruxcore.com
+security:
+- bearer: []
+tags:
+- name: Account
+paths:
+  /account/api-keys:
+    get:
+      operationId: get_account_api_keys
+      tags:
+      - Account
+      summary: GET /account/api-keys
+      x-source: https://docs.acruxcore.com/api-reference/traces
+      responses:
+        '200':
+          description: Success (shape read from the example response on the page)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetAccountApiKeysResponse'
+      x-evidence:
+        kind: code-example
+        language: curl
+        snippet: "curl -H \"Authorization: Bearer $ACRUXCORE_API_KEY \" \\ \" $ACRUXCORE_BASE_URL /traces/ec60bcfb-ede3-4160-86bf-dc47f3966025\" \n { \"trace\" : { \"id\" : \"ec60bcfb-ede3-4160-86bf-dc47f3966025\" , \"name\" : \"Say hi\" , \"sessionId\" : null , \"status\" : \"ok\" , \"startedAt\" : \"2026-09-13T20:07:55.139Z\" , \"endedAt\" : \"2026-09-13T20:08:01.318Z\" , \"spanCount\" : 1 , \"totalCostUsd\" : 0.000002375 , \"totalTokens\" : 15 , \""
+components:
+  schemas:
+    GetAccountApiKeysResponse:
+      type: object
+      properties:
+        trail:
+          type: array
+          items:
+            type: object
+            properties:
+              model:
+                type: string
+              modelId:
+                type: string
+              attempts:
+                type: integer
+              credentialId:
+                type: string
+              upstreamModel:
+                type: string
+        warning:
+          type: object
+          properties:
+            type:
+              type: string
+            message:
+              type: string
+        attempts:
+          type: integer
+        cacheHit:
+          type: boolean
+  securitySchemes:
+    bearer:
+      type: http
+      scheme: bearer
