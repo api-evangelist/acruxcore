@@ -12,3 +12,15 @@ plans:
   price_text: Free while we are in beta.
   description: The whole platform, unlocked. You connect your own provider keys, so the only model spend is the one you already have.
 docs: https://acruxcore.com/pricing
+x-canonical:
+  generated: '2026-10-23'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models: []
+  units: []
+  plans:
+  - name: Beta Free
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods: []
