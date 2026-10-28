@@ -64,5 +64,134 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Acrux Core is a company surfaced via the API Evangelist harvest backlog (source: g2-catalog) and added to the network as a stub for full-pipeline profiling.
-- https://acruxcore.com/
+Acrux Core is an open-source LLMOps platform designed for engineering teams to manage, version, and evaluate prompts, gateways, and tools across multiple LLM providers. It offers self-hostable deployment via Docker, a hosted beta, and SDKs for TypeScript and Python. Features include prompt versioning, tool integration, tracing, audit trails, and cost monitoring, all under an Apache-2.0 license.
+
+**Areas:** LLMOps · Open Source · Platform · Engineering · Artificial Intelligence
+
+## Acrux Core on APIs.io
+
+Everything profiled for Acrux Core is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/acruxcore/](https://apis.io/providers/acruxcore/)** — or go straight to one of the APIs or properties below.
+
+### APIs (6)
+
+- [Acrux Core API](https://apis.io/apis/acruxcore/acrux-core-api/) — The AcruxCore REST API provides endpoints for authentication, prompts, versions, gateway, tracing, tools, and evaluation.
+- [Acrux Core Account API](https://apis.io/apis/acruxcore/acruxcore-account-api/) — The Account API from Acrux Core — 1 operation(s) for account.
+- [Acrux Core Acrux Core API](https://apis.io/apis/acruxcore/acruxcore-acrux-core-api-api/) — The Acrux Core API API from Acrux Core — 2 operation(s) for acrux core api.
+- [Acrux Core Prompts API](https://apis.io/apis/acruxcore/acruxcore-prompts-api/) — The Prompts API from Acrux Core — 6 operation(s) for prompts.
+- [Acrux Core Tools API](https://apis.io/apis/acruxcore/acruxcore-tools-api/) — The Tools API from Acrux Core — 5 operation(s) for tools.
+- [Acrux Core Traces API](https://apis.io/apis/acruxcore/acruxcore-traces-api/) — The Traces API from Acrux Core — 4 operation(s) for traces.
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### JSON Schema (6)
+
+The data models the API reads and writes.
+
+- [GetAccountApiKeysResponse](https://apis.io/schemas/acruxcore/acruxcore-get-account-api-keys-response/)
+- [PatchToolsIdResponse](https://apis.io/schemas/acruxcore/acruxcore-patch-tools-id-response/)
+- [PostApiV1PromptsImportRequest](https://apis.io/schemas/acruxcore/acruxcore-post-api-v1-prompts-import-request/)
+- [PostApiV1PromptsImportResponse](https://apis.io/schemas/acruxcore/acruxcore-post-api-v1-prompts-import-response/)
+- [PostApiV1V1IdResponse](https://apis.io/schemas/acruxcore/acruxcore-post-api-v1-v1-id-response/)
+- [PostToolsSyncRequest](https://apis.io/schemas/acruxcore/acruxcore-post-tools-sync-request/)
+
+#### JSON-LD (1)
+
+Linked-data contexts for the provider's vocabulary.
+
+- [Acruxcore Context](https://apis.io/jsonld/acruxcore/acruxcore-context/)
+
+#### Governance rules (1)
+
+Spectral rulesets for the provider's contracts.
+
+- [Acrux Core API Rules](https://apis.io/rules/acruxcore/acruxcore-rules/)
+
+#### Security (3)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Acruxcore Authentication](https://apis.io/security/acruxcore/acruxcore-authentication/)
+- [Acruxcore Domain Security](https://apis.io/security/acruxcore/acruxcore-domain-security/)
+- [Acruxcore Vulnerability Disclosure](https://apis.io/security/acruxcore/acruxcore-vulnerability-disclosure/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Acruxcore Plans Pricing](https://apis.io/plans/acruxcore/acruxcore-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Acruxcore Rate Limits](https://apis.io/rate-limits/acruxcore/acruxcore-rate-limits/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://acruxcore.com/)
+- [Documentation](https://docs.acruxcore.com/)
+- [Getting started](https://docs.acruxcore.com/docs/getting-started/quickstart)
+- [API reference](https://docs.acruxcore.com/api-reference)
+- [Pricing](https://acruxcore.com/pricing)
+- [Support](https://acruxcore.com/contact)
+- [Blog](https://docs.acruxcore.com/blog)
+- [Security](https://acruxcore.com/security)
+- [Terms of service](https://acruxcore.com/terms)
+- [Privacy policy](https://acruxcore.com/privacy)
+
+## API Evangelist rating
+
+**Kin Score 44.4** — developing · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 71.4 |
+| Contract quality | 25.9 |
+| Contract governance | 22.0 |
+| Operational transparency | 31.6 |
+| Developer ergonomics | 61.2 |
+| Access clarity | 52.6 |
+
+**Agent readiness 28.3** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | — |
+| Reversibility Documented | documented (partial credit) |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | partial |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | unknown |
+| Well Known Catalog | yes |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 28.2** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/acruxcore/](https://apis.io/providers/acruxcore/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Acrux Core: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/acruxcore/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
